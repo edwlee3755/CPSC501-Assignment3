@@ -1,11 +1,21 @@
+import org.jdom2.Document;
 
 public class Manager {
 
 	public static void main(String[] args) {
 
+		Document document = null;
 		if (args[0].equals("sender"))
 		{
+			System.out.println("Sender mode");
+			printObjectCreationMenu();
 			
+			
+			
+			
+			String fileToSend = "toSend.xml";
+			Serializer startSerialize = new Serializer();
+			document = startserialize.serialize(obj);
 		}
 		
 		else if (args[1].equals("receiver"))

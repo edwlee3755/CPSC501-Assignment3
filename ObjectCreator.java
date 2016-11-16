@@ -11,7 +11,7 @@ public class ObjectCreator {
 			int userInput = in.nextInt();
 			
 
-			
+			Object obj = null;
 			//First Object: A simple object with only primitives for instance variables.
 			if (userInput == 1)
 			{
@@ -23,12 +23,14 @@ public class ObjectCreator {
 					System.out.println("Enter value for char variable");
 					char c = in.nextLine().charAt(0);
 					
-					ObjectPrimitiveVariables obj = new ObjectPrimitiveVariables(i, c);
+					ObjectPrimitiveVariables obj1 = new ObjectPrimitiveVariables(i, c);
+					obj = obj1;
 				}
 				//else default if no set
 				else
 				{
-					ObjectPrimitiveVariables obj = new ObjectPrimitiveVariables();
+					ObjectPrimitiveVariables obj1 = new ObjectPrimitiveVariables();
+					obj = obj1;
 				}
 			}
 			
@@ -52,18 +54,20 @@ public class ObjectCreator {
 					System.out.println("(Object 2)Enter value for char variable");
 					char secondCharObj = in.nextLine().charAt(0);
 					
-					ObjectReferenceObject obj = new ObjectReferenceObject(firstIntObj, firstCharObj, secondIntObj, secondCharObj);
+					ObjectReferenceObject obj2 = new ObjectReferenceObject(firstIntObj, firstCharObj, secondIntObj, secondCharObj);
+					obj = obj2;
 				}
 				else
 				{
-					ObjectReferenceObject obj = new ObjectReferenceObject();
+					ObjectReferenceObject obj2 = new ObjectReferenceObject();
+					obj = obj2;
 				}
 			}
 			
 			//Third Object: An object that contains an array of primitives
 			else if (userInput == 3)
 			{
-				ObjectPrimitiveArray obj = new ObjectPrimitiveArray();		//Create the object
+				ObjectPrimitiveArray obj3 = new ObjectPrimitiveArray();		//Create the object
 				
 				System.out.print("Object that contains an array of size 5 has been created");
 				System.out.println("Enter y to set array values. Otherwise enter n");
@@ -79,7 +83,7 @@ public class ObjectCreator {
 						System.out.println("Enter the VALUE for the index you wish to set");
 						int value = in.nextInt();
 						
-						obj.setIntArray(index, value);
+						obj3.setIntArray(index, value);
 						
 						System.out.println("Enter y to set another value in the array. Otherwise enter n");
 						String checkSetValue = in.nextLine();
@@ -90,23 +94,25 @@ public class ObjectCreator {
 							
 					}
 				}
+				obj = obj3;
 			}
 			
 			//Fourth Object: An object that contains an array of object references
 			else if (userInput == 4)
 			{
 				ObjectArrayObjectReferences obj4 = new ObjectArrayObjectReferences();
+				obj = obj4;
 			}
 			
 			//Fifth Object: An object that uses an instance of one of Java's Collection classes to refer to several other objects
 			else
 			{
-				ObjectJavaCollection obj = new ObjectJavaCollection();
-				obj.javaCollectionObj.toArray();
+				ObjectJavaCollection obj5 = new ObjectJavaCollection();
+				obj5.javaCollectionObj.toArray();
+				obj = obj5;
 			}
 			//-----------Serialize------------------
 			
-
 			
 			
 			
