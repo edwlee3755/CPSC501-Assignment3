@@ -108,10 +108,11 @@ public class ObjectCreator {
 			else
 			{
 				ObjectJavaCollection obj = new ObjectJavaCollection();
+				obj.javaCollectionObj.toArray();
 			}
 			//-----------Serialize------------------
 			
-			
+
 			
 			
 			
