@@ -2,13 +2,18 @@ import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import org.jdom2.Document;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+
 public class Receiver {
 	
-	public static void main(String[] args)
+	public static void main(String[] args) throws JDOMException, IOException
 	{
 		try{
 			int portNumber = 6666;
@@ -28,7 +33,10 @@ public class Receiver {
 				fos.write(revisedBuffer);
 			}
 			
+
+
 			serverSocket.close();
+			
 			
 		}
 		catch(Exception e)
@@ -36,7 +44,21 @@ public class Receiver {
 			System.out.println(e);
 		}
 		
-		//--
+		SAXBuilder builder = new SAXBuilder();
+		Document document;
+		try {
+			document = builder.build(".\\outfile.xml");
+			Deserialize deserializer = new Deserialize();
+			Object obj = deserializer.deserialize(document);
+			Inspector inspect = new Inspector();
+			inspect.inspect(obj, true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+
 		
 		
 		

@@ -11,10 +11,7 @@ public class SenderManager {
 	public static void main(String[] args) 
 	{
 		Document document = null;
-		/*
-		if (args[0].equals("sender"))
-		{
-		*/
+
 			System.out.println("Sender mode");
 			printObjectCreationMenu();
 
@@ -165,38 +162,9 @@ public class SenderManager {
 			
 			//send file
 			Sender send = new Sender();
-			
-			
-			
-			
-			
-		}
 		
-		
-		
-		
-		
-	/*	
-		else if (args[1].equals("receiver"))
-		{
-			
 		}
 
-	*/		
-			//----------------------------------------
-	/*		
-			//Prompt to make another object
-			System.out.println("Do you want to make another object? y//n");
-			String nextIter = in.nextLine();
-			if (nextIter.equals("n"))
-			{
-				go = false;
-			}
-
-			
-	//	} while loop bracket
-	}
-	*/
 	private static void printObjectCreationMenu()
 	{
 		System.out.println("Enter any of the following to create specified object");

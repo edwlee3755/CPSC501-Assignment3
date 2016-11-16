@@ -12,7 +12,6 @@ public class ObjectJavaCollection{
 		for (int i = 0; i < 3; i++)
 		{
 			javaCollectionObj.add(new ObjectPrimitiveVariables());
-		}
-				
+		}	
 	}
 }

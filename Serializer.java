@@ -51,7 +51,7 @@ public class Serializer {
 					Element referenceElement = new Element("reference");
 					Object objectRefValue = Array.get(obj, i);
 					serializeObject(objectRefValue);
-					referenceElement.addContent((String) table.get(objectRefValue));
+					referenceElement.addContent(table.get(objectRefValue).toString());
 					objectElement.addContent(referenceElement);
 				}
 			}
@@ -62,7 +62,7 @@ public class Serializer {
 				{
 					Element objectValue = new Element("value");
 					Object objectRefValue = Array.get(obj, i);
-					objectValue.addContent((String) objectRefValue);
+					objectValue.addContent(objectRefValue.toString());
 					objectElement.addContent(objectValue);
 				}
 			}
@@ -94,17 +94,7 @@ public class Serializer {
 					objectElement.addContent(fieldValueElement);
 					
 				}
-/*				
-				//if field is an array type
-				else if (fields[index].getType().isArray())
-				{
-					Element referenceValueElement = new Element("reference");
-					Object objectRefValue = fields[index].get(obj);
-					serialize(objectRefValue);
-					referenceValueElement.addContent((String) table.get(objectRefValue));
-					objectElement.addContent(referenceValueElement);
-				}
-	*/			
+
 				//else if field references object / is array, we recurse and serialize on object
 				else
 				{
