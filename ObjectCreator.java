@@ -1,17 +1,24 @@
 import java.util.Scanner;
 
+import org.jdom2.Document;
+
 public class ObjectCreator {
 	
-	public ObjectCreator() {
-		boolean go = true;
-		
-//		while (go){
+	public static void main(String[] args) 
+	{
+		Document document = null;
+		if (args[0].equals("sender"))
+		{
+			System.out.println("Sender mode");
+			printObjectCreationMenu();
 
 			Scanner in = new Scanner(System.in);
 			int userInput = in.nextInt();
 			
-
-			Object obj = null;
+			
+			//==============================BEGIN OBJECT CREATION=============================================
+			
+			Object obj = null;	// create an object we can use to pass in
 			//First Object: A simple object with only primitives for instance variables.
 			if (userInput == 1)
 			{
@@ -111,20 +118,39 @@ public class ObjectCreator {
 				obj5.javaCollectionObj.toArray();
 				obj = obj5;
 			}
+			//========================= END OF OBJECT CREATION =======================================================================
+			
+			
+			
 			//-----------Serialize------------------
 			
 			
 			
 			
+			String fileToSend = "toSend.xml";
+			Serializer startSerialize = new Serializer();
+			try 
+			{
+				document = startSerialize.serialize(obj);
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		
+		
+		
+		else if (args[1].equals("receiver"))
+		{
 			
-			
-			
-			
-			
-			
+		}
+
 			
 			//----------------------------------------
-			
+	/*		
 			//Prompt to make another object
 			System.out.println("Do you want to make another object? y//n");
 			String nextIter = in.nextLine();
@@ -132,8 +158,20 @@ public class ObjectCreator {
 			{
 				go = false;
 			}
-		
+	*/	
 			
 	//	} while loop bracket
 	}
+	
+	private static void printObjectCreationMenu()
+	{
+		System.out.println("Enter any of the following to create specified object");
+		System.out.println("(1) A simple object with only primitives for instance variables.");
+		System.out.println("(2) An object that contains references to other objects");
+		System.out.println("(3) An object that contains an array of primitives");
+		System.out.println("(4) An object that contains an array of object references");
+		System.out.println("(5) An object that uses an instance of one of Java's Collection classes to refer to several other objects");
+	}
+
+	
 }
