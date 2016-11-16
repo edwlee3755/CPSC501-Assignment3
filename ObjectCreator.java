@@ -2,17 +2,19 @@ import java.util.Scanner;
 
 public class ObjectCreator {
 	
-	public static void main(String[] args) {
+	public ObjectCreator() {
 		boolean go = true;
 		
-		while (go){
-		
-			System.out.print("Enter any of the following to create specified object");
-			System.out.print("(1) A simple object with only primitives for instance variables.");
-			System.out.print("(2) An object that contains references to other objects");
-			System.out.print("(3) An object that contains an array of primitives");
-			System.out.print("(4) An object that contains an array of object references");
-			System.out.print("(5) An object that uses an instance of one of Java's Collection classes to refer to several other objects");
+//		while (go){
+		private static void printObjectCreationMenu()
+		{
+			System.out.println("Enter any of the following to create specified object");
+			System.out.println("(1) A simple object with only primitives for instance variables.");
+			System.out.println("(2) An object that contains references to other objects");
+			System.out.println("(3) An object that contains an array of primitives");
+			System.out.println("(4) An object that contains an array of object references");
+			System.out.println("(5) An object that uses an instance of one of Java's Collection classes to refer to several other objects");
+		}
 			Scanner in = new Scanner(System.in);
 			int userInput = in.nextInt();
 			
@@ -134,6 +136,6 @@ public class ObjectCreator {
 			}
 		
 			
-		}
+	//	} while loop bracket
 	}
 }
