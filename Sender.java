@@ -16,7 +16,7 @@ public class Sender {
 
 			//sending xml file
 			int count; 
-			String inputFile = "C:\\XMLData\\file.xml";
+			String inputFile = ".\\toSend.xml";
 			File myFile = new File (inputFile);
 			byte[] buffer = new byte[(int)myFile.length()];
 			OutputStream out = socket.getOutputStream();
@@ -25,7 +25,7 @@ public class Sender {
 						out.write(buffer, 0 , count);
 						out.flush();
 					}
-			
+			System.out.println("sending test");
 			socket.close();
 		}
 		catch(Exception e)

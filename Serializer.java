@@ -89,7 +89,8 @@ public class Serializer {
 				if (fields[index].getType().isPrimitive())
 				{
 					Element fieldValueElement = new Element("value");
-					fieldValueElement.addContent((String) fields[index].get(obj));
+					Object fieldValue = fields[index].get(obj);
+					fieldValueElement.addContent(fieldValue.toString());
 					objectElement.addContent(fieldValueElement);
 					
 				}

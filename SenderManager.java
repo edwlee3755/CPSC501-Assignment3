@@ -1,14 +1,20 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 import org.jdom2.Document;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
-public class ObjectCreator {
+public class SenderManager {
 	
 	public static void main(String[] args) 
 	{
 		Document document = null;
+		/*
 		if (args[0].equals("sender"))
 		{
+		*/
 			System.out.println("Sender mode");
 			printObjectCreationMenu();
 
@@ -23,12 +29,15 @@ public class ObjectCreator {
 			if (userInput == 1)
 			{
 				System.out.println("Enter y to set variable values. Otherwise enter n");
-				String toSetValue = in.nextLine();
+				Scanner in2 = new Scanner(System.in);
+				Scanner in3 = new Scanner(System.in);
+				String toSetValue = in2.nextLine();
 				if (toSetValue.equals("y")){
 					System.out.println("Enter value for integer variable");
-					int i = in.nextInt();
+					int i = in2.nextInt();
 					System.out.println("Enter value for char variable");
-					char c = in.nextLine().charAt(0);
+					String stringToConvert = in3.nextLine();
+					char c = stringToConvert.charAt(0);
 					
 					ObjectPrimitiveVariables obj1 = new ObjectPrimitiveVariables(i, c);
 					obj = obj1;
@@ -45,21 +54,25 @@ public class ObjectCreator {
 			else if (userInput == 2)
 			{
 				System.out.println("2 Objects are referenced. Enter y to set variable values. Otherwise enter n");
-				String toSetValue = in.nextLine();
+				Scanner in2 = new Scanner(System.in);
+				Scanner in3 = new Scanner(System.in);
+				Scanner in4 = new Scanner(System.in);
+				String toSetValue = in2.nextLine();
 				if (toSetValue.equals("y")){
 					System.out.println("Begin entering values for first referenced object");
 					
 					System.out.println("(Object 1)Enter value for integer variable");
-					int firstIntObj = in.nextInt();
+					int firstIntObj = in2.nextInt();
 					System.out.println("(Object 1)Enter value for char variable");
-					char firstCharObj = in.nextLine().charAt(0);
+					char firstCharObj = in3.nextLine().charAt(0);
 					
 					System.out.println("Begin entering values for second referenced object");
 					
 					System.out.println("(Object 2)Enter value for integer variable");
-					int secondIntObj = in.nextInt();
+					int secondIntObj = in3.nextInt();
 					System.out.println("(Object 2)Enter value for char variable");
-					char secondCharObj = in.nextLine().charAt(0);
+					String stringToConvert = in4.nextLine();
+					char secondCharObj = stringToConvert.charAt(0);
 					
 					ObjectReferenceObject obj2 = new ObjectReferenceObject(firstIntObj, firstCharObj, secondIntObj, secondCharObj);
 					obj = obj2;
@@ -76,9 +89,13 @@ public class ObjectCreator {
 			{
 				ObjectPrimitiveArray obj3 = new ObjectPrimitiveArray();		//Create the object
 				
-				System.out.print("Object that contains an array of size 5 has been created");
+				Scanner in2 = new Scanner(System.in);
+				Scanner in3 = new Scanner(System.in);
+				Scanner in4 = new Scanner(System.in);
+				Scanner in5 = new Scanner(System.in);
+				System.out.println("Object that contains an array of size 5 has been created");
 				System.out.println("Enter y to set array values. Otherwise enter n");
-				String toSetValue = in.nextLine();
+				String toSetValue = in2.nextLine();
 				if (toSetValue.equals("y"))
 				{
 					//Loop to check if user wants to keep changing values in the array
@@ -86,14 +103,14 @@ public class ObjectCreator {
 					while(changeValue)
 					{
 						System.out.println("Enter the INDEX you wish to set");
-						int index = in.nextInt();
+						int index = in3.nextInt();
 						System.out.println("Enter the VALUE for the index you wish to set");
-						int value = in.nextInt();
+						int value = in4.nextInt();
 						
 						obj3.setIntArray(index, value);
 						
 						System.out.println("Enter y to set another value in the array. Otherwise enter n");
-						String checkSetValue = in.nextLine();
+						String checkSetValue = in5.nextLine();
 						if (checkSetValue.equals("n"))
 						{
 							changeValue = false;
@@ -118,15 +135,12 @@ public class ObjectCreator {
 				obj5.javaCollectionObj.toArray();
 				obj = obj5;
 			}
-			//========================= END OF OBJECT CREATION =======================================================================
+			//========================= END OF OBJECT CREATION =======================================================================	
 			
-			
+			System.out.println("Object has been created. Beginning Serialization");
 			
 			//-----------Serialize------------------
-			
-			
-			
-			
+
 			String fileToSend = "toSend.xml";
 			Serializer startSerialize = new Serializer();
 			try 
@@ -136,19 +150,39 @@ public class ObjectCreator {
 			catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+			XMLOutputter xmlOutput = new XMLOutputter();
+			
+			xmlOutput.setFormat(Format.getPrettyFormat());
+			try 
+			{
+				xmlOutput.output(document, new FileWriter(fileToSend));
+			} 
+			catch (IOException e) {
+
+				e.printStackTrace();
+			}
+			
+			//send file
+			Sender send = new Sender();
+			
+			
+			
+			
+			
 		}
 		
 		
 		
 		
 		
-		
+	/*	
 		else if (args[1].equals("receiver"))
 		{
 			
 		}
 
-			
+	*/		
 			//----------------------------------------
 	/*		
 			//Prompt to make another object
@@ -158,11 +192,11 @@ public class ObjectCreator {
 			{
 				go = false;
 			}
-	*/	
+
 			
 	//	} while loop bracket
 	}
-	
+	*/
 	private static void printObjectCreationMenu()
 	{
 		System.out.println("Enter any of the following to create specified object");
